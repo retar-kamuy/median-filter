@@ -1,0 +1,20 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++: clang++ build and debug active file",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${fileDirname}/${fileBasenameNoExtension}",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "LD_LIBRARY_PATH" : "/opt/opencv-4.7.0/lib64"
+      },
+      "preLaunchTask": "C/C++: clang++ build active file"
+    }
+  ]
+}
