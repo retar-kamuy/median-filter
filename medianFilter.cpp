@@ -1,30 +1,9 @@
 #include <cstring>
 #include "include/medianFilter.hpp"
+// #include "include/bubbleSort.hpp"
+#include "include/mergeSort.hpp"
 
-template <typename T>
-int arrayLength(T array) {
-    return sizeof(&array) / sizeof(array[0]);
-}
-
-void bubbleSort(unsigned char *src, unsigned char *dst) {
-    int length = arrayLength(src);
-
-    memcpy(dst, src, length);
-
-    for (int i = 0; i < length - 1; i++) {
-        for (int j = i; j < length; j++) {
-            if (dst[i] > dst[j]) {
-                unsigned char temp = dst[i];
-                dst[i] = dst[j];
-                dst[j] = temp;
-            }
-        }
-    }
-}
-
-void get8NeighborCoordinates(
-    int width, int height, int center, int *neighbors
-) {
+void get8NeighborCoordinates(int width, int center, int *neighbors) {
     neighbors[0] = center - width - 1;
     neighbors[1] = center - width;
     neighbors[2] = center - width + 1;
@@ -44,15 +23,17 @@ void medianFilter(
             int center = (j + 1) * (width + 2) + i + 1;
             int neighbors[8];
 
-            get8NeighborCoordinates(width, height, center, neighbors);
+            get8NeighborCoordinates(width, center, neighbors);
 
             unsigned char target[9];
             target[0] = center;
             for (int k = 1; k < 9; k++) {
-                target[k] = src[neighbors[k]];
+                target[k] = src[neighbors[k - 1]];
             }
             unsigned char sorted[9];
-            bubbleSort(target, sorted);
+            // bubbleSort(target, sorted);
+            memcpy(sorted, target, 9);
+            mergeSort(sorted, 0, 8);
 
             dst[j * width + i] = sorted[4];
         }
