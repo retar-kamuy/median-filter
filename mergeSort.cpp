@@ -1,64 +1,65 @@
-void merge(unsigned char dst[], unsigned char src[], int left, int middle, int right) {
-    int n1 = middle - left + 1;  // number of elements in first subarray
-    int n2 = right - middle;      // number of elements in second subarray
+void merge(unsigned char array[], int low, int middle, int high) {
+    int n1 = middle - low + 1;  // number of elements in first subarray
+    int n2 = high - middle;     // number of elements in second subarray
 
     // create temporary subarrays
 #ifdef __SYNTHESIS__
-    int L[5];
-    int R[5];
+    unsigned char lowerArray[5];
+    unsigned char higherArray[5];
+    #pragma HLS ARRAY_RESHAPE variable=lowerArray type=complete dim=1
+    #pragma HLS ARRAY_RESHAPE variable=higherArray type=complete dim=1
 #else
-    int L[n1];  // array[left..middle]
-    int R[n2];  // array[middle+1..r]
+    unsigned char lowerArray[n1];   // array[low..middle]
+    unsigned char higherArray[n2];  // array[middle+1..r]
 #endif
 
-    // copy data to subarrays L and R
+    // copy data to subarrays lowerArray and higherArray
     copyL: for (int i = 0; i < n1; i++) {
         #pragma HLS unroll
-        L[i] = src[left + i];
+        lowerArray[i] = array[low + i];
     }
     copyR: for (int j = 0; j < n2; j++) {
         #pragma HLS unroll
-        R[j] = src[middle + 1 + j];
+        higherArray[j] = array[middle + 1 + j];
     }
 
     // merge the two arrays
-    int l = 0;    // index of L
-    int r = 0;    // index of R
-    int m = left;    // index of merged array
+    int l = 0;  // index of lowerArray
+    int h = 0;  // index of higherArray
+    int m = low;    // index of merged array
 
-    mergeLR: while (l < n1 && r < n2) {
-        if (L[l] <= R[r]) {
-            dst[m] = L[l];
+    mergeLR: while (l < n1 && h < n2) {
+        if (lowerArray[l] <= higherArray[h]) {
+            array[m] = lowerArray[l];
             l++;
         } else {
-            dst[m] = R[r];
-            r++;
+            array[m] = higherArray[h];
+            h++;
         }
         m++;
     }
 
     mergeL: while (l < n1) {
-        dst[m] = L[l];
+        array[m] = lowerArray[l];
         l++;
         m++;
     }
 
-    mergeR: while (r < n2) {
-        dst[m] = R[r];
-        r++;
+    mergeR: while (h < n2) {
+        array[m] = higherArray[h];
+        h++;
         m++;
     }
 }
 
-void mergeSort(unsigned char dst[], unsigned char src[], int left, int right) {
-    if (left < right) {
-        // avoids overflow for large left and h
-        int middle = left + (right - left) / 2;
-        unsigned char purged[9];
+void mergeSort(unsigned char array[], int low, int high) {
+    if (low < high) {
+        // avoids overflow for large low and high
+        int middle = low + (high - low) / 2;
 
-        mergeSort(purged, src, left, middle);
-        mergeSort(purged, src, middle + 1, right);
-        merge(dst, purged, left, middle, right);
+        mergeSort(array, low, middle);
+        mergeSort(array, middle + 1, high);
+        merge(array, low, middle, high);
     }
 }
 
