@@ -42,6 +42,16 @@
 			<location>/home/redhat/Repositories/median-filter/vitis/solution1/.tcls</location>
 		</link>
 		<link>
+			<name>source/bitonicSort.cpp</name>
+			<type>1</type>
+			<location>/home/redhat/Repositories/median-filter/bitonicSort.cpp</location>
+		</link>
+		<link>
+			<name>source/bitonicSort.hpp</name>
+			<type>1</type>
+			<location>/home/redhat/Repositories/median-filter/include/bitonicSort.hpp</location>
+		</link>
+		<link>
 			<name>source/bubbleSort.cpp</name>
 			<type>1</type>
 			<location>/home/redhat/Repositories/median-filter/bubbleSort.cpp</location>

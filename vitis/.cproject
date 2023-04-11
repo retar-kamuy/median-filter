@@ -60,8 +60,6 @@
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/include"/>
                                     									
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/lnx64/tools/auto_cc/include"/>
-                                    									
-                                    <listOptionValue builtIn="false" value="/home/redhat/Repositories/median-filter"/>
                                     								
                                 </option>
                                 								
@@ -96,8 +94,6 @@
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/include"/>
                                     									
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/lnx64/tools/auto_cc/include"/>
-                                    									
-                                    <listOptionValue builtIn="false" value="/home/redhat/Repositories/median-filter"/>
                                     								
                                 </option>
                                 								
@@ -232,8 +228,6 @@
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/include"/>
                                     									
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/lnx64/tools/auto_cc/include"/>
-                                    									
-                                    <listOptionValue builtIn="false" value="/home/redhat/Repositories/median-filter"/>
                                     								
                                 </option>
                                 								
@@ -258,8 +252,6 @@
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/include"/>
                                     									
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/lnx64/tools/auto_cc/include"/>
-                                    									
-                                    <listOptionValue builtIn="false" value="/home/redhat/Repositories/median-filter"/>
                                     								
                                 </option>
                                 								
@@ -366,5 +358,7 @@
     </storageModule>
     	
     <storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+    	
+    <storageModule moduleId="refreshScope"/>
     
 </cproject>

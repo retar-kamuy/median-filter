@@ -1,10 +1,12 @@
-<project xmlns="com.autoesl.autopilot.project" name="vitis" top="merge">
+<project xmlns="com.autoesl.autopilot.project" name="vitis" top="bitonicSort">
     <includePaths/>
     <libraryPaths/>
     <Simulation>
-        <SimFlow name="csim"/>
+        <SimFlow name="csim" csimMode="0" lastCsimMode="0"/>
     </Simulation>
     <files xmlns="">
+        <file name="bitonicSort.cpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
+        <file name="include/bitonicSort.hpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
         <file name="bubbleSort.cpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
         <file name="include/bubbleSort.hpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
         <file name="medianFilter.cpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
