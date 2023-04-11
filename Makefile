@@ -21,3 +21,12 @@ all: clean $(OBJS) $(TARGET)
 
 clean:
 	-rm -f $(OBJS) $(TARGET) *.d
+
+gtest:
+	clang++ bubbleSort.cpp test/bubbleSort_test.cpp -I. -I/opt/googletest/include -L/opt/googletest/lib64 -lgtest -lgtest_main
+
+bazel_test:
+	bazel build --config=clang_config :bubbleSort_test
+
+cmake_test:
+	cmake -S . -B build && cmake --build build && cd build && ctest

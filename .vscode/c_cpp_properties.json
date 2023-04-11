@@ -4,7 +4,8 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/opt/opencv/include/opencv4"
+                "/opt/opencv/include/opencv4",
+                "/opt/googletest/include"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang++",
