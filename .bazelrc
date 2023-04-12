@@ -10,3 +10,9 @@ build:clang_config --cpu=k8
 # build.
 
 build:clang_config --host_crosstool_top=@bazel_tools//tools/cpp:toolchain
+
+# Use C++14 Compile for Google Test
+build --cxxopt=-std=c++14
+
+# Use clang++ Compile for Google Test
+# build --config=clang_config

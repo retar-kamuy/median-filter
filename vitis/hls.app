@@ -1,18 +1,14 @@
-<project xmlns="com.autoesl.autopilot.project" name="vitis" top="bitonicSort">
+<project xmlns="com.autoesl.autopilot.project" name="vitis" top="bitonicSortCore">
     <includePaths/>
     <libraryPaths/>
-    <Simulation>
-        <SimFlow name="csim" csimMode="0" lastCsimMode="0"/>
+    <libraryFlag/>
+    <Simulation argv="">
+        <SimFlow name="csim" ldflags="" csimMode="0" lastCsimMode="0"/>
     </Simulation>
     <files xmlns="">
-        <file name="bitonicSort.cpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
+        <file name="../../test/bitonicSort_test.cpp" sc="0" tb="1" cflags=" -Wno-unknown-pragmas" csimflags=" -Wno-unknown-pragmas" blackbox="false"/>
         <file name="include/bitonicSort.hpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
-        <file name="bubbleSort.cpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
-        <file name="include/bubbleSort.hpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
-        <file name="medianFilter.cpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
-        <file name="include/medianFilter.hpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
-        <file name="mergeSort.cpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
-        <file name="include/mergeSort.hpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
+        <file name="bitonicSort.cpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
     </files>
     <solutions xmlns="">
         <solution name="solution1" status="active"/>

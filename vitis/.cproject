@@ -55,6 +55,10 @@
                                     									
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/include/ap_sysc"/>
                                     									
+                                    <listOptionValue builtIn="false" value="/opt/googletest/include"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="/home/redhat/Repositories/median-filter/."/>
+                                    									
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/include/etc"/>
                                     									
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/include"/>
@@ -89,6 +93,10 @@
                                     									
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/include/ap_sysc"/>
                                     									
+                                    <listOptionValue builtIn="false" value="/opt/googletest/include"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="/home/redhat/Repositories/median-filter/."/>
+                                    									
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/include/etc"/>
                                     									
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/include"/>
@@ -119,9 +127,9 @@
                                     								
                                 </option>
                                 								
-                                <option id="gnu.c.link.option.libs.537387633" name="Libraries (-l)" superClass="gnu.c.link.option.libs"/>
+                                <option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="true" id="gnu.c.link.option.libs.537387633" name="Libraries (-l)" superClass="gnu.c.link.option.libs" valueType="libs"/>
                                 								
-                                <option id="gnu.c.link.option.ldflags.1550589476" name="Linker flags" superClass="gnu.c.link.option.ldflags"/>
+                                <option id="gnu.c.link.option.ldflags.1550589476" name="Linker flags" superClass="gnu.c.link.option.ldflags" value="" valueType="string"/>
                                 							
                             </tool>
                             							
@@ -133,9 +141,9 @@
                                     								
                                 </option>
                                 								
-                                <option id="gnu.cpp.link.option.libs.974369832" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs"/>
+                                <option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="true" id="gnu.cpp.link.option.libs.974369832" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs"/>
                                 								
-                                <option id="gnu.cpp.link.option.flags.802662138" name="Linker flags" superClass="gnu.cpp.link.option.flags"/>
+                                <option id="gnu.cpp.link.option.flags.802662138" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="" valueType="string"/>
                                 								
                                 <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1654475752" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
                                     									
@@ -156,6 +164,66 @@
                         </toolChain>
                         					
                     </folderInfo>
+                    					
+                    <fileInfo id="cdt.managedbuild.config.gnu.exe.debug.742700841.99053862" name="bitonicSort_test.cpp" rcbsApplicability="disable" resourcePath="testbench/bitonicSort_test.cpp" toolsToInvoke="cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug.1961136272.2108073236">
+                        						
+                        <tool id="cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug.1961136272.2108073236" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug.1961136272">
+                            							
+                            <option id="gnu.cpp.compiler.option.preprocessor.def.323440291" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def"/>
+                            							
+                            <option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.cpp.compiler.option.include.paths.1759922371" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+                                								
+                                <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/lnx64/tools/systemc/include"/>
+                                								
+                                <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/include/ap_sysc"/>
+                                								
+                                <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/include/etc"/>
+                                								
+                                <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/include"/>
+                                								
+                                <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/lnx64/tools/auto_cc/include"/>
+                                								
+                                <listOptionValue builtIn="false" value="/home/redhat/Repositories/median-filter"/>
+                                							
+                            </option>
+                            							
+                            <option id="gnu.cpp.compiler.option.other.other.662718387" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0" valueType="string"/>
+                            							
+                            <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1023382985" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+                            						
+                        </tool>
+                        					
+                    </fileInfo>
+                    					
+                    <fileInfo id="cdt.managedbuild.config.gnu.exe.debug.742700841.2028983994" name="bitonicSort.cpp" rcbsApplicability="disable" resourcePath="source/bitonicSort.cpp" toolsToInvoke="cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug.1961136272.626686733">
+                        						
+                        <tool id="cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug.1961136272.626686733" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug.1961136272">
+                            							
+                            <option id="gnu.cpp.compiler.option.preprocessor.def.393999565" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def"/>
+                            							
+                            <option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.cpp.compiler.option.include.paths.190708242" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+                                								
+                                <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/lnx64/tools/systemc/include"/>
+                                								
+                                <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/include/ap_sysc"/>
+                                								
+                                <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/include/etc"/>
+                                								
+                                <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/include"/>
+                                								
+                                <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/lnx64/tools/auto_cc/include"/>
+                                								
+                                <listOptionValue builtIn="false" value="/home/redhat/Repositories/median-filter"/>
+                                							
+                            </option>
+                            							
+                            <option id="gnu.cpp.compiler.option.other.other.69039546" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0" valueType="string"/>
+                            							
+                            <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1393412999" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+                            						
+                        </tool>
+                        					
+                    </fileInfo>
                     					
                     <sourceEntries>
                         						
@@ -223,6 +291,10 @@
                                     									
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/include/ap_sysc"/>
                                     									
+                                    <listOptionValue builtIn="false" value="/opt/googletest/include"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="/home/redhat/Repositories/median-filter/."/>
+                                    									
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/include/etc"/>
                                     									
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/include"/>
@@ -247,6 +319,10 @@
                                     									
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/include/ap_sysc"/>
                                     									
+                                    <listOptionValue builtIn="false" value="/opt/googletest/include"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="/home/redhat/Repositories/median-filter/."/>
+                                    									
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/include/etc"/>
                                     									
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/include"/>
@@ -267,9 +343,9 @@
                                     								
                                 </option>
                                 								
-                                <option id="gnu.c.link.option.libs.287244937" name="Libraries (-l)" superClass="gnu.c.link.option.libs"/>
+                                <option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="true" id="gnu.c.link.option.libs.287244937" name="Libraries (-l)" superClass="gnu.c.link.option.libs" valueType="libs"/>
                                 								
-                                <option id="gnu.c.link.option.ldflags.915149" name="Linker flags" superClass="gnu.c.link.option.ldflags"/>
+                                <option id="gnu.c.link.option.ldflags.915149" name="Linker flags" superClass="gnu.c.link.option.ldflags" value="" valueType="string"/>
                                 							
                             </tool>
                             							
@@ -281,9 +357,9 @@
                                     								
                                 </option>
                                 								
-                                <option id="gnu.cpp.link.option.libs.2076198040" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs"/>
+                                <option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="true" id="gnu.cpp.link.option.libs.2076198040" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs"/>
                                 								
-                                <option id="gnu.cpp.link.option.flags.239160014" name="Linker flags" superClass="gnu.cpp.link.option.flags"/>
+                                <option id="gnu.cpp.link.option.flags.239160014" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="" valueType="string"/>
                                 								
                                 <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1470741479" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
                                     									
@@ -304,6 +380,66 @@
                         </toolChain>
                         					
                     </folderInfo>
+                    					
+                    <fileInfo id="cdt.managedbuild.config.gnu.exe.release.348948857.835208079" name="bitonicSort_test.cpp" rcbsApplicability="disable" resourcePath="testbench/bitonicSort_test.cpp" toolsToInvoke="cdt.managedbuild.tool.gnu.cpp.compiler.exe.release.357349923.671219148">
+                        						
+                        <tool id="cdt.managedbuild.tool.gnu.cpp.compiler.exe.release.357349923.671219148" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.exe.release.357349923">
+                            							
+                            <option id="gnu.cpp.compiler.option.preprocessor.def.287653913" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def"/>
+                            							
+                            <option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.cpp.compiler.option.include.paths.508345636" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+                                								
+                                <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/lnx64/tools/systemc/include"/>
+                                								
+                                <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/include/ap_sysc"/>
+                                								
+                                <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/include/etc"/>
+                                								
+                                <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/include"/>
+                                								
+                                <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/lnx64/tools/auto_cc/include"/>
+                                								
+                                <listOptionValue builtIn="false" value="/home/redhat/Repositories/median-filter"/>
+                                							
+                            </option>
+                            							
+                            <option id="gnu.cpp.compiler.option.other.other.1532658804" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0" valueType="string"/>
+                            							
+                            <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.542429824" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+                            						
+                        </tool>
+                        					
+                    </fileInfo>
+                    					
+                    <fileInfo id="cdt.managedbuild.config.gnu.exe.release.348948857.117318382" name="bitonicSort.cpp" rcbsApplicability="disable" resourcePath="source/bitonicSort.cpp" toolsToInvoke="cdt.managedbuild.tool.gnu.cpp.compiler.exe.release.357349923.1368094824">
+                        						
+                        <tool id="cdt.managedbuild.tool.gnu.cpp.compiler.exe.release.357349923.1368094824" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.exe.release.357349923">
+                            							
+                            <option id="gnu.cpp.compiler.option.preprocessor.def.1041842418" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def"/>
+                            							
+                            <option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.cpp.compiler.option.include.paths.284742634" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+                                								
+                                <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/lnx64/tools/systemc/include"/>
+                                								
+                                <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/include/ap_sysc"/>
+                                								
+                                <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/include/etc"/>
+                                								
+                                <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/include"/>
+                                								
+                                <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2022.2/lnx64/tools/auto_cc/include"/>
+                                								
+                                <listOptionValue builtIn="false" value="/home/redhat/Repositories/median-filter"/>
+                                							
+                            </option>
+                            							
+                            <option id="gnu.cpp.compiler.option.other.other.533218200" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0" valueType="string"/>
+                            							
+                            <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1583337584" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+                            						
+                        </tool>
+                        					
+                    </fileInfo>
                     					
                     <sourceEntries>
                         						

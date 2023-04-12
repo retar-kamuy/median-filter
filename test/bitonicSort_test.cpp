@@ -1,10 +1,10 @@
 #include <random>
 #include <gtest/gtest.h>    // NOLINT
-#include "include/bubbleSort.hpp"
+#include "include/bitonicSort.hpp"
 
 #define N 32
 
-TEST(BubbleSortTest, FunctionTest) {
+TEST(BitonicSortTest, FunctionTest) {
     std::random_device seed_gen;
     std::mt19937 engine(seed_gen());
     std::uniform_int_distribution<> rand(0, 255);
@@ -19,7 +19,7 @@ TEST(BubbleSortTest, FunctionTest) {
     }
     std::cout << std::endl;
 
-    bubbleSort(a0, N);
+    bitonicSort(a0, N);
 
     for (int k = 0; k < N - 1; k++) {
         ASSERT_LE(a0[k], a0[k + 1]);

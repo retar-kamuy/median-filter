@@ -39,3 +39,5 @@ vitis/.settings/
 vitis/solution1/
 vitis/.vitis_hls_log_all.xml
 vitis_hls.log
+
+bazel-*
