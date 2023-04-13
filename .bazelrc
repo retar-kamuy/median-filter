@@ -15,4 +15,4 @@ build:clang_config --host_crosstool_top=@bazel_tools//tools/cpp:toolchain
 # build --cxxopt=-std=c++14
 
 # Use clang++ Compile for Google Test
-build --config=clang_config
+# build --config=clang_config
