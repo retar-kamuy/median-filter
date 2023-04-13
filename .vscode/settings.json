@@ -60,6 +60,8 @@
         "thread": "cpp",
         "typeinfo": "cpp",
         "bitset": "cpp",
-        "fstream": "cpp"
+        "fstream": "cpp",
+        "any": "cpp",
+        "variant": "cpp"
     }
 }

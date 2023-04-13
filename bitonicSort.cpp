@@ -1,5 +1,4 @@
-#include <random>
-#include <cstring>
+#include <cmath>
 #include "include/bitonicSort.hpp"
 
 #ifdef __SYNTHESIS__

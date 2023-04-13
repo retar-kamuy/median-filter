@@ -5,16 +5,40 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "C/C++: clang++ build and debug active file",
-      "type": "lldb",
+      "name": "C/C++",
+      "type": "cppdbg",
       "request": "launch",
       "program": "${fileDirname}/${fileBasenameNoExtension}",
       "args": [],
       "cwd": "${workspaceFolder}",
+      "environment": [
+        {
+          "name": "LD_LIBRARY_PATH",
+                    "value": "/opt/opencv-4.7.0/lib64"
+        }
+      ],
+      "MIMode": "gdb",
+      "miDebuggerPath": "/usr/bin/gdb",
+      "preLaunchTask": "g++",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+    ]
+    },
+    {
+      "name": "Example",
+      "type": "lldb",
+      "request": "launch",
+      "preLaunchTask": "Bazel Build (Debug)",
+      "program": "${workspaceFolder}/bazel-bin/medianFilter",
+      "args": [],
+      "cwd": "${workspaceFolder}/bazel-out/k8-dbg/bin/medianFilter.runfiles",
       "env": {
         "LD_LIBRARY_PATH" : "/opt/opencv-4.7.0/lib64"
-      },
-      "preLaunchTask": "C/C++: clang++ build active file"
-    }
+      }
+  }
   ]
 }

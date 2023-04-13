@@ -1,7 +1,6 @@
 #include <cstring>
 #include "include/medianFilter.hpp"
-// #include "include/bubbleSort.hpp"
-#include "include/mergeSort.hpp"
+#include "include/bitonicSort.hpp"
 
 void get8NeighborCoordinates(int width, int center, int *neighbors) {
     neighbors[0] = center - width - 1;
@@ -16,7 +15,7 @@ void get8NeighborCoordinates(int width, int center, int *neighbors) {
 
 void medianFilter(
     int width, int height,
-    unsigned char *src, unsigned char *dst
+    unsigned char src[], unsigned char dst[]
 ) {
     for (int i = 0; i < width- 2; i++) {
         for (int j = 0; j < height - 2; j++) {
@@ -30,12 +29,9 @@ void medianFilter(
             for (int k = 1; k < 9; k++) {
                 target[k] = src[neighbors[k - 1]];
             }
-            unsigned char sorted[9];
-            // bubbleSort(target, sorted);
-            memcpy(sorted, target, 9);
-            mergeSort(sorted, 0, 8);
+            bitonicSort(target, 9);
 
-            dst[j * width + i] = sorted[4];
+            dst[j * width + i] = target[4];
         }
     }
 }
