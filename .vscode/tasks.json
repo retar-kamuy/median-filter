@@ -32,6 +32,12 @@
       "label": "Bazel Build (Debug)",
       "type": "shell",
       "command": "bazel build --compilation_mode=dbg :medianFilter",
+      "windows": {
+        "command": "bazel build :example --experimental_enable_runfiles -c dbg"
+      },
+      "osx": {
+        "command": "bazel build :example -c dbg --spawn_strategy=standalone",
+      },
       "problemMatcher": ["$gcc"],
       "group": {
           "kind": "build",

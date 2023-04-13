@@ -29,16 +29,26 @@
     ]
     },
     {
-      "name": "Example",
-      "type": "lldb",
+      "name": "Bazel C/C++",
+      "type": "cppdbg",
       "request": "launch",
-      "preLaunchTask": "Bazel Build (Debug)",
-      "program": "${workspaceFolder}/bazel-bin/medianFilter",
+      "program": "${workspaceFolder}/bazel-out/k8-dbg/bin/medianFilter",
       "args": [],
-      "cwd": "${workspaceFolder}/bazel-out/k8-dbg/bin/medianFilter.runfiles",
-      "env": {
-        "LD_LIBRARY_PATH" : "/opt/opencv-4.7.0/lib64"
-      }
-  }
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}/bazel-out/k8-dbg/bin/medianFilter.runfiles/opencv",
+      "externalConsole": false,
+      "environment": [
+        {
+          "name": "LD_LIBRARY_PATH",
+                    "value": "/opt/opencv-4.7.0/lib64"
+        }
+      ],
+      "MIMode": "gdb",
+      "miDebuggerPath": "/usr/bin/gdb",
+      "preLaunchTask": "Bazel Build (Debug)",
+      "sourceFileMap": {
+        "/proc/self/cwd": "${workspaceFolder}",
+      },
+    }
   ]
 }

@@ -62,6 +62,14 @@
         "bitset": "cpp",
         "fstream": "cpp",
         "any": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "cinttypes": "cpp",
+        "forward_list": "cpp",
+        "unordered_set": "cpp",
+        "optional": "cpp",
+        "regex": "cpp",
+        "future": "cpp",
+        "cfenv": "cpp",
+        "typeindex": "cpp"
     }
 }
