@@ -2,7 +2,7 @@
 #include "include/medianFilter.hpp"
 
 cv::Mat imread(const std::string &filename) {
-    cv::Mat orginalImage = cv::imread("data/Lenna.png", cv::IMREAD_UNCHANGED);
+    cv::Mat orginalImage = cv::imread(filename, cv::IMREAD_UNCHANGED);
     std::cout << "Read '" << filename
               << "'(" << orginalImage.rows << " x " << orginalImage.cols << ")"
               << std::endl;
@@ -58,7 +58,7 @@ void uCharToMat(
 }
 
 int main(void) {
-    cv::Mat originalImage = imread("data/Lenna.png");
+    cv::Mat originalImage = imread("data/Lenna_noise.png");
 
     cv::Mat grayScaled;
     cv::cvtColor(originalImage, grayScaled, cv::COLOR_RGB2GRAY);
@@ -70,7 +70,8 @@ int main(void) {
     matToUChar(paddingImage, paddingData);
 
     unsigned char filteredData[grayScaled.cols * grayScaled.rows];
-    medianFilter(grayScaled.cols, grayScaled.rows, paddingData, filteredData);
+    medianFilter(filteredData, grayScaled.cols, grayScaled.rows, paddingData);
+    std::cout << "Median filter end" << std::endl;
 
     cv::Mat filteredImage;
     originalImage.copyTo(filteredImage);

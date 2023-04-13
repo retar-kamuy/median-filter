@@ -14,10 +14,10 @@ cc_library(
 cc_binary(
     name = "medianFilter",
     srcs = ["main.cpp", "medianFilter.cpp", "include/medianFilter.hpp"],
-    # copts = ["-std=c++17"],
-    copts = ["-stdlib=libc++ ", "-std=c++11"],
+    copts = ["-fdiagnostics-color=always","-g", "-std=c++17"],
     linkopts = ["-L/opt/opencv-4.7.0/lib64"],
-    data = ["data/Lenna.png"],
+    env = {"LD_LIBRARY_PATH": "/opt/opencv-4.7.0/lib64"},
+    data = ["data/Lenna_noise.png"],
     deps = ["//:bitonicSort", "@opencv_linux//:opencv"],
 )
 

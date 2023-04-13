@@ -2,7 +2,9 @@
 #define MEDIANFILTER_HPP_
 
 void medianFilter(
-    int width, int height, unsigned char *src, unsigned char *dst
+    unsigned char dst[],
+    int width, int height,
+    unsigned char src[]
 );
 
 #endif  // MEDIANFILTER_HPP_
