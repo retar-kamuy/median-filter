@@ -7,14 +7,24 @@ cc_library(
 cc_library(
     name = "bitonicSort",
     srcs = ["bitonicSort.cpp"],
-    copts = ["-D__SYNTHESIS__"],
+    # copts = ["-D__SYNTHESIS__"],
     hdrs = ["include/bitonicSort.hpp"],
+)
+
+cc_binary(
+    name = "medianFilter",
+    srcs = ["main.cpp", "medianFilter.cpp", "include/medianFilter.hpp"],
+    # copts = ["-std=c++17"],
+    copts = ["-stdlib=libc++ ", "-std=c++11"],
+    linkopts = ["-L/opt/opencv-4.7.0/lib64"],
+    data = ["data/Lenna.png"],
+    deps = ["//:bitonicSort", "@opencv_linux//:opencv"],
 )
 
 cc_test(
     name = "bubbleSort_test",
     srcs = ["test/bubbleSort_test.cpp"],
-    copts = ["-Iinclude"],
+    copts = ["-ImedianFilter"],
     deps = [
         "@com_google_googletest//:gtest_main",
         "//:bubbleSort",
