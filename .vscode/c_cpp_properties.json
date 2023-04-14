@@ -4,7 +4,8 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/opt/opencv-4.7.0/include/opencv4"
+                "/opt/opencv-4.7.0/include/opencv4",
+                "/opt/Xilinx/Vitis_HLS/2022.2/include"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/g++",

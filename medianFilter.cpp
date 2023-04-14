@@ -1,6 +1,5 @@
-#include <iostream>
-#include <cstring>
-#include <cassert>
+#include "hls_stream.h"
+#include "include/common.hpp"
 #include "include/medianFilter.hpp"
 #include "include/bitonicSort.hpp"
 
@@ -18,17 +17,87 @@ void get8NeighborCoordinates(
 
     for (int i = 0; i < 8; i++) {
         assert(neighbors[i] >= 0);
-        if (neighbors[i] >= width * height) {
-            std::cout << "neighbors[" << i << "] = " << neighbors[i]
-                      << ", center = " << center << std::endl;
-        }
         assert(neighbors[i] < width * height);
     }
 }
 
+struct window {
+    unsigned char pix[3][3];
+};
+
+#ifdef __SYNTHESIS__
 void medianFilter(
-    unsigned char dst[],
-    int width, int height, unsigned char src[]
+    hls::stream<unsigned char> &src,
+    int width,
+    int height,
+    hls::stream<unsigned char> &dst
+) {
+    #pragma HLS DATAFLOW
+    // #pragma HLS PIPELINE II=1
+
+    unsigned char LineBuffer[3][514];
+    #pragma HLS ARRAY_PARTITION variable=LineBuffer dim=1 complete
+    #pragma HLS DEPENDENCE variable=LineBuffer inter false
+    #pragma HLS DEPENDENCE variable=LineBuffer intra false
+
+    // Sliding window of [FILTER_V_SIZE][FILTER_H_SIZE] pixels
+    window Window;
+
+    unsigned col_ptr = 0;
+    unsigned ramp_up = width*((FILTER_V_SIZE-1)/2)+(FILTER_H_SIZE-1)/2;
+    unsigned num_pixels = width*height;
+    unsigned num_iterations = num_pixels + ramp_up;
+
+    LOOP_PIXEL: for (int i = 0; i < 514 * 514 ; i++) {
+        #pragma HLS PIPELINE II=1
+        unsigned char new_pixel = (i < width*height) ? src.read() : 0;
+
+        for (int m = 0; m < FILTER_V_SIZE; m++) {
+#pragma HLS PIPELINE II=1
+        	for (int n = 0; n < FILTER_H_SIZE; n++) {
+#pragma HLS UNROLL
+            	Window.pix[m][n] = Window.pix[m][n+1];
+            }
+            Window.pix[m][FILTER_H_SIZE-1] = (m < FILTER_V_SIZE-1) ?
+                LineBuffer[m][col_ptr] : new_pixel;
+        }
+
+        for (int k = 0; k < FILTER_V_SIZE-2; k++) {
+#pragma HLS UNROLL
+            LineBuffer[k][col_ptr] = LineBuffer[k+1][col_ptr];
+        }
+        LineBuffer[FILTER_V_SIZE-2][col_ptr] = new_pixel;
+
+        // Update the line buffer column pointer
+        if (col_ptr == (width-1)) {
+            col_ptr = 0;
+        } else {
+            col_ptr++;
+        }
+
+        if (i >= ramp_up) {
+            // nsigned char target[SORT_SIZE], buf[SORT_SIZE];
+           	// #pragma HLS ARRAY_RESHAPE variable=target type=complete dim=0
+           	// for (int k = 1; k < SORT_SIZE; k++) {
+           	//     #pragma HLS UNROLL
+           	//     if (k < FILTER_V_SIZE * FILTER_H_SIZE) {
+           	//         target[k] = Window.pix[k / FILTER_V_SIZE][k % FILTER_H_SIZE];
+           	//     } else {
+           	//         target[k] = 255;
+           	//     }
+          	// }
+          	// bitonicSort(target, buf);
+            //dst.write(buf[4]);
+          	dst.write(Window.pix[0][0]);
+        }
+    }
+}
+#else
+void medianFilter(
+    unsigned char src[],
+    int width,
+    int height,
+    unsigned char dst[]
 ) {
     for (int i = 0; i < width; i++) {
         for (int j = 0; j < height; j++) {
@@ -39,21 +108,21 @@ void medianFilter(
 
             int neighbors[8];
 
-            // std::cout << "j = " << j << ", i =" << i << std::endl;
             get8NeighborCoordinates(neighbors, width + 2, height + 2, center);
 
             unsigned char target[16];
-            for (int k = 0; k < 16; k++) {
-                target[k] = 255;
-            }
+
             target[0] = src[center];
-            for (int k = 1; k < 9; k++) {
-                target[k] = src[neighbors[k - 1]];
+            for (int k = 1; k < 16; k++) {
+                if (k < 9) {
+                    target[k] = src[neighbors[k - 1]];
+                } else {
+                    target[k] = 255;
+                }
             }
-
             bitonicSort(target, 16);
-
             dst[j * width + i] = target[4];
         }
     }
 }
+#endif  // __SYNTHESIS__

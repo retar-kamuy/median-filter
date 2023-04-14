@@ -1,50 +1,23 @@
-#include <iostream>
-#include <cmath>
+#include "include/common.hpp"
 #include "include/bitonicSort.hpp"
 
 #ifdef __SYNTHESIS__
-
-#define N 32
-
-void kernel(unsigned char dst[], unsigned char src[], int p, int q) {
-#pragma HLS ARRAY_RESHAPE variable=src type=complete dim=0  // NOLINT
-#pragma HLS ARRAY_RESHAPE variable=dst type=complete dim=0  // NOLINT
+void kernel(unsigned char src[], int p, int q, unsigned char dst[]) {
+#pragma HLS ARRAY_RESHAPE variable=src type=complete dim=0
+#pragma HLS ARRAY_RESHAPE variable=dst type=complete dim=0
 
     int d = 1 << (p - q);
 
-    unsigned char in[N];
-    unsigned char out[N];
-#pragma HLS ARRAY_RESHAPE variable=in type=complete dim=0   // NOLINT
-#pragma HLS ARRAY_RESHAPE variable=out type=complete dim=0  // NOLINT
-
-    // memcpy(out, src, N);
-    for (int i = 0; i < N; i++) {
+    for (int i=0; i < SORT_SIZE; i++) {
 #pragma HLS UNROLL
-        out[i] = src[i];
-    }
-
-    LOOP_KERNEL: for (int i = 0; i < N; i++) {
-#pragma HLS UNROLL
-        // memcpy(in, out, N);
-        for (int j = 0; j < N; j++) {
-#pragma HLS UNROLL
-            in[j] = out[j];
-        }
-
         bool up = ((i >> p) & 2) == 0;
 
-        if ((i & d) == 0 && (in[i] > in[i | d]) == up) {
-            out[i] = in[i | d];
-            out[i | d] = in[i];
+        if ((i & d) == 0 && (src[i] > src[i | d]) == up) {
+            dst[i] = src[i | d];
+            dst[i | d] = src[i];
         } else {
-            out[i] = in[i];
+            dst[i] = src[i];
         }
-    }
-
-    // memcpy(dst, out, N);
-    for (int i = 0; i < N; i++) {
-#pragma HLS UNROLL
-        dst[i] = out[i];
     }
 }
 #else
@@ -64,54 +37,40 @@ void kernel(unsigned char a[], int len, int p, int q) {
 #endif  // __SYNTHESIS__
 
 #ifdef __SYNTHESIS__
+void bitonicSort(unsigned char src[SORT_SIZE], unsigned char dst[SORT_SIZE]) {
+#pragma HLS ARRAY_RESHAPE variable=src type=complete dim=0
+#pragma HLS ARRAY_RESHAPE variable=dst type=complete dim=0
 
-// #define LOGN static_cast<int>(log2(N))
-#define LOGN 5
+    unsigned char in[SORT_SIZE];
+    unsigned char out[SORT_SIZE];
 
-void bitonicSortCore(unsigned char dst[N], unsigned char src[N]) {
-#pragma HLS ARRAY_RESHAPE variable=src type=complete dim=0  // NOLINT
-#pragma HLS ARRAY_RESHAPE variable=dst type=complete dim=0  // NOLINT
+#pragma HLS ARRAY_RESHAPE variable=in type=complete dim=0
+#pragma HLS ARRAY_RESHAPE variable=out type=complete dim=0
 
-    unsigned char merged[LOGN][N];
-#pragma HLS ARRAY_RESHAPE variable=merged type=complete dim=2   // NOLINT
-
-    LOOP_MAIN: for (int i = 0; i < LOGN; i++) {
-        unsigned char sorted[LOGN][N];
-#pragma HLS ARRAY_RESHAPE variable=sorted type=complete dim=0   // NOLINT
-        LOOP_SUB: for (int j = 0; j < LOGN; j++) {
+    LOOP_BITONIC_MAIN: for (int i=0; i < SORT_LOG_SIZE; i++) {
+        LOOP_BITONIC_SUB: for (int j=0; j < SORT_LOG_SIZE; j++) {
+#pragma HLS PIPELINE II=1
             if (j <= i) {
-                if (i == 0 && j == 0) {
-                    kernel(merged[i], src, i, j);
-                } else if (j == 0) {
-                    kernel(sorted[j], merged[i - 1], i, j);
-                } else if (i == LOGN - 1 && j == LOGN - 1) {
-                    kernel(dst, sorted[j - 1], i, j);
-                } else if (j == i) {
-                    kernel(merged[i], sorted[j - 1], i, j);
-                } else {
-                    kernel(sorted[j], sorted[j - 1], i, j);
+                for (int k=0; k < SORT_SIZE; k++) {
+#pragma HLS UNROLL
+                    in[k] = (j == 0 && i == 0) ? src[i] : out[k];
+                }
+                kernel(in, i, j, out);
+
+                for (int k=0; k < SORT_SIZE; k++) {
+#pragma HLS UNROLL
+                    dst[k] = out[k];
                 }
             }
         }
     }
 }
-
-void bitonicSort(unsigned char a[], int len) {
-    unsigned char t[N];
-    // memcpy(t, a, len);
-    for (int i = 0; i < N; i++) {
-#pragma HLS UNROLL
-        t[i] = a[i];
-    }
-
-    bitonicSortCore(a, t);
-}
 #else
 void bitonicSort(unsigned char a[], int len) {
     int logn = log2(len);
 
-    for (int i = 0; i < logn; i++) {
-        for (int j = 0; j <= i; j++) {
+    for (int i=0; i < logn; i++) {
+        for (int j=0; j <= i; j++) {
             kernel(a, len, i, j);
         }
     }

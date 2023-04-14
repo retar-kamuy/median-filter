@@ -11,20 +11,26 @@ cc_library(
     hdrs = ["include/bitonicSort.hpp"],
 )
 
-cc_binary(
+cc_library(
     name = "medianFilter",
-    srcs = ["main.cpp", "medianFilter.cpp", "include/medianFilter.hpp"],
-    copts = ["-fdiagnostics-color=always","-g", "-std=c++17"],
+    srcs = ["medianFilter.cpp"],
+    hdrs = ["include/medianFilter.hpp"],
+    deps = ["//:bitonicSort"],
+)
+
+cc_binary(
+    name = "main",
+    srcs = ["main.cpp"],
     linkopts = ["-L/opt/opencv-4.7.0/lib64"],
     env = {"LD_LIBRARY_PATH": "/opt/opencv-4.7.0/lib64"},
     data = ["data/Lenna_noise.png"],
-    deps = ["//:bitonicSort", "@opencv_linux//:opencv"],
+    deps = ["//:medianFilter", "@opencv_linux//:opencv"],
 )
 
 cc_test(
     name = "bubbleSort_test",
     srcs = ["test/bubbleSort_test.cpp"],
-    copts = ["-ImedianFilter"],
+    copts = ["-Iinclude"],
     deps = [
         "@com_google_googletest//:gtest_main",
         "//:bubbleSort",
