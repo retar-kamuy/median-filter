@@ -14,7 +14,7 @@ cc_library(
 cc_library(
     name = "medianFilter",
     srcs = ["medianFilter.cpp"],
-    hdrs = ["include/medianFilter.hpp"],
+    hdrs = ["include/medianFilter.hpp", "include/common.hpp"],
     deps = ["//:bitonicSort"],
 )
 
@@ -43,5 +43,14 @@ cc_test(
     deps = [
         "@com_google_googletest//:gtest_main",
         "//:bitonicSort",
+    ],
+)
+
+cc_test(
+    name = "medianFilter_test",
+    srcs = ["test/medianFilter_test.cpp", "include/common.hpp"],
+    deps = [
+        "@com_google_googletest//:gtest_main",
+        "//:medianFilter",
     ],
 )

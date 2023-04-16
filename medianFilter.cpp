@@ -1,4 +1,6 @@
+#ifdef __SYNTHESIS__
 #include "hls_stream.h"
+#endif  // __SYNTHESIS__
 #include "include/common.hpp"
 #include "include/medianFilter.hpp"
 #include "include/bitonicSort.hpp"
@@ -27,18 +29,20 @@ struct window {
 
 #ifdef __SYNTHESIS__
 void medianFilter(
-    hls::stream<unsigned char> &src,
-    int width,
-    int height,
-    hls::stream<unsigned char> &dst
+   hls::stream<unsigned char> &src,
+   // unsigned char src[],
+   int width,
+   int height,
+   hls::stream<unsigned char> &dst
+   // unsigned char dst[]
 ) {
     #pragma HLS DATAFLOW
-    // #pragma HLS PIPELINE II=1
+    //#pragma HLS PIPELINE II=1
 
-    unsigned char LineBuffer[3][514];
-    #pragma HLS ARRAY_PARTITION variable=LineBuffer dim=1 complete
-    #pragma HLS DEPENDENCE variable=LineBuffer inter false
-    #pragma HLS DEPENDENCE variable=LineBuffer intra false
+    // unsigned char LineBuffer[3][514];
+    // #pragma HLS ARRAY_PARTITION variable=LineBuffer dim=1 complete
+    // #pragma HLS DEPENDENCE variable=LineBuffer inter false
+    // #pragma HLS DEPENDENCE variable=LineBuffer intra false
 
     // Sliding window of [FILTER_V_SIZE][FILTER_H_SIZE] pixels
     window Window;
@@ -48,25 +52,27 @@ void medianFilter(
     unsigned num_pixels = width*height;
     unsigned num_iterations = num_pixels + ramp_up;
 
-    LOOP_PIXEL: for (int i = 0; i < 514 * 514 ; i++) {
+    // LOOP_PIXEL: for (int i = 0; i < 514 * 514 ; i++) {
+    LOOP_PIXEL: for (int i = 0; i < 9/*264196*/ ; i++) {
         #pragma HLS PIPELINE II=1
+        //unsigned char new_pixel = (i < width*height) ? src.read() : 0;
         unsigned char new_pixel = (i < width*height) ? src.read() : 0;
 
         for (int m = 0; m < FILTER_V_SIZE; m++) {
-#pragma HLS PIPELINE II=1
-        	for (int n = 0; n < FILTER_H_SIZE; n++) {
-#pragma HLS UNROLL
-            	Window.pix[m][n] = Window.pix[m][n+1];
+            for (int n = 0; n < FILTER_H_SIZE; n++) {
+                // #pragma HLS UNROLL
+                //Window.pix[m][n] = Window.pix[m][n+1];
             }
-            Window.pix[m][FILTER_H_SIZE-1] = (m < FILTER_V_SIZE-1) ?
-                LineBuffer[m][col_ptr] : new_pixel;
+            // Window.pix[m][FILTER_H_SIZE-1] = (m < FILTER_V_SIZE-1) ?
+            //     LineBuffer[m][col_ptr] : new_pixel;
+            //Window.pix[m][FILTER_H_SIZE-1] = new_pixel;
         }
 
-        for (int k = 0; k < FILTER_V_SIZE-2; k++) {
-#pragma HLS UNROLL
-            LineBuffer[k][col_ptr] = LineBuffer[k+1][col_ptr];
-        }
-        LineBuffer[FILTER_V_SIZE-2][col_ptr] = new_pixel;
+        // for (int k = 0; k < FILTER_V_SIZE-2; k++) {
+        // #pragma HLS UNROLL
+        //     LineBuffer[k][col_ptr] = LineBuffer[k+1][col_ptr];
+        // }
+        // LineBuffer[FILTER_V_SIZE-2][col_ptr] = new_pixel;
 
         // Update the line buffer column pointer
         if (col_ptr == (width-1)) {
@@ -75,21 +81,22 @@ void medianFilter(
             col_ptr++;
         }
 
-        if (i >= ramp_up) {
+        //if (i >= ramp_up) {
             // nsigned char target[SORT_SIZE], buf[SORT_SIZE];
-           	// #pragma HLS ARRAY_RESHAPE variable=target type=complete dim=0
-           	// for (int k = 1; k < SORT_SIZE; k++) {
-           	//     #pragma HLS UNROLL
-           	//     if (k < FILTER_V_SIZE * FILTER_H_SIZE) {
-           	//         target[k] = Window.pix[k / FILTER_V_SIZE][k % FILTER_H_SIZE];
-           	//     } else {
-           	//         target[k] = 255;
-           	//     }
-          	// }
-          	// bitonicSort(target, buf);
-            //dst.write(buf[4]);
-          	dst.write(Window.pix[0][0]);
-        }
+            // #pragma HLS ARRAY_RESHAPE variable=target type=complete dim=0
+            // for (int k = 1; k < SORT_SIZE; k++) {
+            //     #pragma HLS UNROLL
+            //     if (k < FILTER_V_SIZE * FILTER_H_SIZE) {
+            //         target[k] = Window.pix[k / FILTER_V_SIZE][k % FILTER_H_SIZE];
+            //     } else {
+            //         target[k] = 255;
+            //     }
+            // }
+            // bitonicSort(target, buf);
+            // dst.write(buf[4]);
+            // dst.write(Window.pix[0][0]);
+        	 dst.write(new_pixel);
+        //}
     }
 }
 #else

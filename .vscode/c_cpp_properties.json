@@ -1,17 +1,18 @@
 {
     "configurations": [
         {
-            "name": "Linux",
+            "name": "Windows",
             "includePath": [
-                "${workspaceFolder}/**",
-                "/opt/opencv-4.7.0/include/opencv4",
-                "/opt/Xilinx/Vitis_HLS/2022.2/include"
+                "${workspaceFolder}\\**",
+                "C:\\opencv\\build\\include",
+                "C:\\Xilinx\\Vitis_HLS\\2022.2\\include",
+                "${workspaceFolder}\\bazel-median-filter\\external\\com_google_googletest\\googletest\\include"
             ],
             "defines": [],
-            "compilerPath": "/usr/bin/g++",
+            "compilerPath": "C:\\Program Files\\LLVM\\bin\\clang++.exe",
             "cStandard": "c17",
             "cppStandard": "c++17",
-            "intelliSenseMode": "linux-gcc-x64"
+            "intelliSenseMode": "windows-clang-x64"
         }
     ],
     "version": 4

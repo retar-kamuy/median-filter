@@ -29,62 +29,62 @@
 		<link>
 			<name>source</name>
 			<type>2</type>
-			<location>/home/redhat/Repositories/median-filter/vitis/.apc/.src</location>
+			<location>C:/Repositories/median-filter/vitis/.apc/.src</location>
 		</link>
 		<link>
 			<name>testbench</name>
 			<type>2</type>
-			<location>/home/redhat/Repositories/median-filter/vitis/.apc/.tb</location>
+			<location>C:/Repositories/median-filter/vitis/.apc/.tb</location>
 		</link>
 		<link>
 			<name>solution1/constraints</name>
 			<type>2</type>
-			<location>/home/redhat/Repositories/median-filter/vitis/solution1/.tcls</location>
+			<location>C:/Repositories/median-filter/vitis/solution1/.tcls</location>
 		</link>
 		<link>
 			<name>source/bitonicSort.cpp</name>
 			<type>1</type>
-			<location>/home/redhat/Repositories/median-filter/bitonicSort.cpp</location>
+			<location>C:/Repositories/median-filter/bitonicSort.cpp</location>
 		</link>
 		<link>
 			<name>source/bitonicSort.hpp</name>
 			<type>1</type>
-			<location>/home/redhat/Repositories/median-filter/include/bitonicSort.hpp</location>
+			<location>C:/Repositories/median-filter/include/bitonicSort.hpp</location>
 		</link>
 		<link>
 			<name>source/common.hpp</name>
 			<type>1</type>
-			<location>/home/redhat/Repositories/median-filter/include/common.hpp</location>
+			<location>C:/Repositories/median-filter/include/common.hpp</location>
 		</link>
 		<link>
 			<name>source/medianFilter.cpp</name>
 			<type>1</type>
-			<location>/home/redhat/Repositories/median-filter/medianFilter.cpp</location>
+			<location>C:/Repositories/median-filter/medianFilter.cpp</location>
 		</link>
 		<link>
 			<name>source/medianFilter.hpp</name>
 			<type>1</type>
-			<location>/home/redhat/Repositories/median-filter/include/medianFilter.hpp</location>
+			<location>C:/Repositories/median-filter/include/medianFilter.hpp</location>
 		</link>
 		<link>
-			<name>testbench/bitonicSort_test.cpp</name>
+			<name>testbench/medianFilter_test.cpp</name>
 			<type>1</type>
-			<location>/home/redhat/Repositories/median-filter/test/bitonicSort_test.cpp</location>
+			<location>C:/Repositories/median-filter/test/medianFilter_test.cpp</location>
 		</link>
 		<link>
 			<name>solution1/constraints/.xml.directive</name>
 			<type>1</type>
-			<location>/home/redhat/Repositories/median-filter/vitis/solution1/solution1.directive</location>
+			<location>C:/Repositories/median-filter/vitis/solution1/solution1.directive</location>
 		</link>
 		<link>
 			<name>solution1/constraints/directives.tcl</name>
 			<type>1</type>
-			<location>/home/redhat/Repositories/median-filter/vitis/solution1/directives.tcl</location>
+			<location>C:/Repositories/median-filter/vitis/solution1/directives.tcl</location>
 		</link>
 		<link>
 			<name>solution1/constraints/script.tcl</name>
 			<type>1</type>
-			<location>/home/redhat/Repositories/median-filter/vitis/solution1/script.tcl</location>
+			<location>C:/Repositories/median-filter/vitis/solution1/script.tcl</location>
 		</link>
 	</linkedResources>
 </projectDescription>

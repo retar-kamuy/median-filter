@@ -6,14 +6,15 @@
         <SimFlow name="csim" ldflags="" csimMode="0" lastCsimMode="0"/>
     </Simulation>
     <files xmlns="">
-        <file name="../../test/bitonicSort_test.cpp" sc="0" tb="1" cflags=" -Wno-unknown-pragmas -Wno-unknown-pragmas -Wno-unknown-pragmas -Wno-unknown-pragmas" csimflags=" -Wno-unknown-pragmas" blackbox="false"/>
-        <file name="bitonicSort.cpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
-        <file name="include/bitonicSort.hpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
-        <file name="include/common.hpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
-        <file name="medianFilter.cpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
+        <file name="../../test/medianFilter_test.cpp" sc="0" tb="1" cflags=" -Wno-unknown-pragmas" csimflags=" -Wno-unknown-pragmas" blackbox="false"/>
         <file name="include/medianFilter.hpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
+        <file name="medianFilter.cpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
+        <file name="include/common.hpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
+        <file name="include/bitonicSort.hpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
+        <file name="bitonicSort.cpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
     </files>
     <solutions xmlns="">
+        <solution name="solution1" status="active"/>
         <solution name="solution1" status="active"/>
     </solutions>
 </project>

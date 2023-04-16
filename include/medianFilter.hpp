@@ -9,6 +9,10 @@ void medianFilter(
     hls::stream<unsigned char> &dst
 );
 #else
+void get8NeighborCoordinates(
+    int neighbors[], int width, int height, int center
+);
+
 void medianFilter(
     unsigned char src[],
     int width,

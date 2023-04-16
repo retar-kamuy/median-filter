@@ -70,7 +70,7 @@ int main(void) {
     matToUChar(paddingImage, paddingData);
 
     unsigned char filteredData[grayScaled.cols * grayScaled.rows];
-    medianFilter(grayScaled.cols, grayScaled.rows, paddingData, filteredData);
+    medianFilter(paddingData, grayScaled.cols, grayScaled.rows, filteredData);
     std::cout << "Median filter end" << std::endl;
 
     cv::Mat filteredImage;

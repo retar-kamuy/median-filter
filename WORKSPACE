@@ -11,6 +11,7 @@ http_archive(
 # opecv4
 new_local_repository(
     name = "opencv_linux",
-    path = "/opt/opencv-4.7.0/include",
+    # path = "/opt/opencv-4.7.0/include",
+    path = "C:\\opencv\\build\\include",
     build_file = "@//:opencv_linux.BUILD"
 )
